@@ -1,6 +1,9 @@
-#include <stdio.h>
+#include<stdio.h>
 #include<assert.h>
-#include <stdlib.h>
+#include<stdlib.h>
+
+//--------------------------------------------------------Reverse a Linked List In Palce--------------------------------------------------------//
+//-----------------------------------------------------------------------START------------------------------------------------------------------//
 
 struct Node {
 	int data;
@@ -48,11 +51,11 @@ void printList(struct Node* head)
 	}
 }
 
-
-int main()
+//reverse list handler function
+void ReverseLinkedList()
 {
-	int arr[] = { 50,40,30,20,10 };
-	int len = sizeof(arr) / sizeof(arr[0]);
+	size_t arr[] = { 50,40,30,20,10 };
+	size_t len = sizeof(arr) / sizeof(arr[0]);
 	struct Node* head = NULL;
 
 	for (size_t i = 0; i < len; i++)
@@ -65,6 +68,72 @@ int main()
 	reverse(&head);
 	printf("\nReversed Linked list: ");
 	printList(head);
+}
+
+//------------------------------------------------------------------------END------------------------------------------------------------------------//
+
+
+
+//------------------------------------------------------------------Check Palindrome-----------------------------------------------------------------//
+//-----------------------------------------------------------------------START-----------------------------------------------------------------------//
+
+//chack if sting is palindrome
+bool IsPalindrome(const char* i_pString)
+{
+	//get length of string
+	size_t len = 0;
+	while (i_pString[len] != '\0')
+	{
+		len++;
+	}
+	//printf("%zu", len);
+
+	//check if palindrome
+	for (size_t i = 0; i < len/2; i++)
+	{
+		if (i_pString[i] != i_pString[len - 1 - i])
+			return false;
+	}
+	return true;
+}
+
+//palindrome handler fucntion
+void StrPalindrome()
+{
+	const char* i_pString = "test";
+	bool x = IsPalindrome(i_pString);
+	if (x)
+	{
+		printf("%s is a palindrome.\n", i_pString);
+	}
+	else
+	{
+		printf("%s is not a palindrome.\n", i_pString);
+	}
+
+	i_pString = "nitin";
+	x = IsPalindrome(i_pString);
+	if (x)
+	{
+		printf("%s is a palindrome.\n", i_pString);
+	}
+	else
+	{
+		printf("%s is not a palindrome.\n", i_pString);
+	}
+}
+
+//------------------------------------------------------------------------END------------------------------------------------------------------------//
+
+
+
+int main()
+{
+	ReverseLinkedList();
+
+	printf("\n\n");
+
+	StrPalindrome();
 
 	return 0;
 }
